@@ -7,7 +7,7 @@ var lane: int = 0
 
 #Move player to lane
 func _process(delta):
-	position.y = lerpf(position.y,lane * current_scene.obs_size.y, delta *20)
+	position.y = lerpf(position.y,lane * current_scene.obs_size.y, delta * (current_scene.speed/20))
 	if Input.is_action_pressed("button_jump") and anim.current_animation=="":
 		jump()
 
@@ -21,7 +21,7 @@ func _input(_e):
 	
 
 func jump():
-	anim.play("jump",1,2.0)
+	anim.play("jump",1,1/(current_scene.time_per_obsticle()*2))
 	
 
 func move_up():
