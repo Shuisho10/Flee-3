@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2jk0phonhmf4"]
+
+[ext_resource type="PackedScene" uid="uid://d3w2kddmqhhql" path="res://res/scenes/core/player.tscn" id="1_700s5"]
+[ext_resource type="Script" path="res://src/core/Scroller.gd" id="2_m3l23"]
+
+[node name="Ingame" type="Node2D"]
+
+[node name="Player" parent="." node_paths=PackedStringArray("current_scene") instance=ExtResource("1_700s5")]
+z_index = 1
+position = Vector2(-500, 0)
+current_scene = NodePath("../Escena")
+jumping = false
+
+[node name="Main" type="Camera2D" parent="."]
+
+[node name="Escena" type="Node2D" parent="."]
+script = ExtResource("2_m3l23")
+speed = 1000.0

@@ -1,7 +1,8 @@
-- Salto lateral
+- Salto lateral <-
+- Rework al powerup (como disparar proyectiles) <-
+
 - Pase de batalla/Gachapon/Skins etc... gimmick
 - Ultimate, seria gracioso jsjsj
-- Rework al powerup (como disparar proyectiles)
 - Poner furras para que el Jhan sea feliz (cada uno con sus gustos smh)
 - Sistema de vida??? (no me tira mucho pero se podria mezclar con powerup)
 - Skins de emoji (se me hizo gracioso)

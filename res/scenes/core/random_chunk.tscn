@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7654xhryk48k"]
+
+[ext_resource type="Script" path="res://src/obsctacles/random_chunk.gd" id="1_vjllu"]
+[ext_resource type="PackedScene" uid="uid://br1t8t37qtphs" path="res://res/scenes/obstacles/normal_obstacle.tscn" id="2_yejtr"]
+[ext_resource type="Shader" path="res://res/scenes/core/test.gdshader" id="3_yo3ak"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s3bep"]
+shader = ExtResource("3_yo3ak")
+
+[node name="Random Chunk" type="Node2D"]
+script = ExtResource("1_vjllu")
+
+[node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Obstacles" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Normal Obstacle" parent="Obstacles" instance=ExtResource("2_yejtr")]
+
+[node name="Normal Obstacle3" parent="Obstacles" instance=ExtResource("2_yejtr")]
+material = SubResource("ShaderMaterial_s3bep")
+position = Vector2(0, 128)

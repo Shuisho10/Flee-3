@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2jk0phonhmf4"]
 
 [ext_resource type="PackedScene" uid="uid://d3w2kddmqhhql" path="res://res/scenes/player.tscn" id="1_6qvhn"]
-[ext_resource type="Texture2D" uid="uid://cu05je6tanfsq" path="res://icon.svg" id="1_lwqxw"]
 [ext_resource type="Script" path="res://src/core/Scroller.gd" id="3_mjgfi"]
+[ext_resource type="PackedScene" uid="uid://bxw2aw34fr450" path="res://res/scenes/pregen_chunk.tscn" id="3_t1i1c"]
 
 [node name="Ingame" type="Node2D"]
 
@@ -10,13 +10,12 @@
 z_index = 1
 position = Vector2(-500, 0)
 current_scene = NodePath("../Escena")
+jumping = false
 
 [node name="Main" type="Camera2D" parent="."]
 
 [node name="Escena" type="Node2D" parent="."]
 script = ExtResource("3_mjgfi")
-example = ExtResource("1_lwqxw")
+speed = 500.0
 
-[node name="obstacle" type="Sprite2D" parent="Escena"]
-position = Vector2(12, 0)
-texture = ExtResource("1_lwqxw")
+[node name="RigidBody2D" parent="Escena" instance=ExtResource("3_t1i1c")]
