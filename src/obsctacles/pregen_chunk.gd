@@ -7,7 +7,7 @@ class_name PregenChunk
 var current_scene: Scroller
 var entered_screen := false
 
-func setup(scene):
+func setup(scene: Scroller):
 	current_scene=scene
 	var vis_notif : VisibleOnScreenNotifier2D = %VisibilityNotifier
 	vis_notif.scale = Vector2(chunk_size)*2+Vector2(1,1)
@@ -22,8 +22,9 @@ func setup(scene):
 			print("flipped y")
 		
 
-func _process(delta):
-	position.x-=delta*current_scene.speed
+func _process(delta: float):
+	if current_scene:
+		position.x-=delta*current_scene.speed
 
 func _on_visibility_notifier_screen_entered():
 	entered_screen = true

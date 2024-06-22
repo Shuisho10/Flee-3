@@ -1,4 +1,10 @@
-- Salto lateral <-
+- Salto lateral <- CHECK
+
+- Obstaculos y enemigos <-
+- Puntaje <-
+- Game over <-
+- Primer nivel de prueba <-
+
 - Rework al powerup (como disparar proyectiles) <-
 
 - Pase de batalla/Gachapon/Skins etc... gimmick
