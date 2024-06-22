@@ -17,8 +17,8 @@ current_scene = NodePath("../TestLevel")
 
 [node name="TestLevel" type="Node2D" parent="." node_paths=PackedStringArray("chunk_pool")]
 script = ExtResource("2_m3l23")
-chunk_pool = [NodePath("Data/Chunks/L Shape Chunk")]
-speed = 1000.0
+chunk_pool = [NodePath("Data/Chunks/Random Chunk")]
+speed = 500.0
 
 [node name="Data" type="Node2D" parent="TestLevel"]
 visible = false
@@ -27,6 +27,7 @@ visible = false
 
 [node name="Random Chunk" parent="TestLevel/Data/Chunks" node_paths=PackedStringArray("obs_pool") instance=ExtResource("3_exxyn")]
 obs_pool = [NodePath("../../Obstacles/Normal Obstacle")]
+frequency = 0.216
 
 [node name="L Shape Chunk" parent="TestLevel/Data/Chunks" instance=ExtResource("4_3105g")]
 position = Vector2(0, 1000)
@@ -46,6 +47,21 @@ position = Vector2(0, -128)
 
 [node name="Normal Obstacle5" parent="TestLevel/Data/Chunks/L Shape Chunk" instance=ExtResource("4_dqd1q")]
 position = Vector2(0, -256)
+
+[node name="L Shape Chunk2" parent="TestLevel/Data/Chunks" instance=ExtResource("4_3105g")]
+position = Vector2(1000, 2000)
+chunk_length = 2
+
+[node name="Normal Obstacle" parent="TestLevel/Data/Chunks/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
+
+[node name="Normal Obstacle2" parent="TestLevel/Data/Chunks/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
+position = Vector2(128, 128)
+
+[node name="Normal Obstacle3" parent="TestLevel/Data/Chunks/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
+position = Vector2(0, 256)
+
+[node name="Normal Obstacle4" parent="TestLevel/Data/Chunks/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
+position = Vector2(128, -128)
 
 [node name="Obstacles" type="Node2D" parent="TestLevel/Data"]
 

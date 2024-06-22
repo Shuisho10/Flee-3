@@ -1,17 +1,16 @@
 - Salto lateral <- CHECK
-
+- Puntaje <- CHECK
+- Game over <- CHECK
 - Obstaculos y enemigos <-
-- Puntaje <-
-- Game over <-
+
+- Rework al powerup (como disparar proyectiles, escudos) <-
+
 - Primer nivel de prueba <-
+- Dificultad (reflexionar sobre esto)
 
-- Rework al powerup (como disparar proyectiles) <-
-
-- Pase de batalla/Gachapon/Skins etc... gimmick
+- Pase de batalla/Gachapon/Skins etc... gimmick (Skins de emoji, furras para el yan)
 - Ultimate, seria gracioso jsjsj
-- Poner furras para que el Jhan sea feliz (cada uno con sus gustos smh)
-- Sistema de vida??? (no me tira mucho pero se podria mezclar con powerup)
-- Skins de emoji (se me hizo gracioso)
+
 
 - elhater08: ponle waifus como en el genshin para sacarle todo el dinero a los adictos al porno
 - KevinFlow — 20/06/24 23:51
