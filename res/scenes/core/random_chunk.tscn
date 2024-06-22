@@ -9,6 +9,7 @@ shader = ExtResource("3_yo3ak")
 
 [node name="Random Chunk" type="Node2D"]
 script = ExtResource("1_vjllu")
+frequency = 1.0
 
 [node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="."]
 unique_name_in_owner = true

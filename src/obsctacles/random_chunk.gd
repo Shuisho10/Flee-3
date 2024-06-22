@@ -15,16 +15,17 @@ func setup(scene: Scroller):
 	var obs_var :Node2D = %Obstacles
 	
 	if obs_var.get_child_count()>0:
-		for i in range(chunk_length-1):
-			for j in range(4):
-				if scene.rng.randf() < frequency:
+		var guaranteed_lane:int = scene.rng.randi_range(0,current_scene.lane_size*2)
+		for j in range(current_scene.lane_size*2+1):
+			for i in range(chunk_length-1):
+				if scene.rng.randf() < frequency and not (j==guaranteed_lane and fmod(i,2)==0):
 					_spawn(scene.rng.randi_range(0,obs_var.get_child_count()-1),Vector2(i,j))
 	
 
 func _spawn(child_index,grid_pos):
 	var obs_var :Node2D = %Obstacles
 	var new_obs :Node2D= obs_var.get_child(child_index).duplicate()
-	new_obs.position = Vector2(current_scene.obs_size.x*grid_pos.x, current_scene.obs_size.y*(grid_pos.y-2))
+	new_obs.position = Vector2(current_scene.obs_size.x*grid_pos.x, current_scene.obs_size.y*(grid_pos.y-current_scene.lane_size))
 	add_child(new_obs)
 
 func _process(delta):
