@@ -11,7 +11,6 @@ var chunk_spawn_distance = 650
 @export var chunk_pool: Array[Node2D]
 var rng: RandomNumberGenerator
 var wait: int =0
-@onready var example := preload("res://res/scenes/core/random_chunk.tscn")
 
 func _init():
 	rng = RandomNumberGenerator.new()
@@ -23,16 +22,16 @@ func _process(delta: float):
 		obs_count = int((scrolled)/obs_size.x)
 		emit_signal("next_obstacle")
 		_spawn()
+		wait-=1
 
 func _spawn():
-	wait=int(fmod(wait+1,5))
-	if wait==0:
+	if wait<0:
 		var randomint: int = rng.randi_range(0,chunk_pool.size()-1)
 		var new_chunk :Node2D = chunk_pool[randomint].duplicate()
 		new_chunk.setup(self)
 		add_child(new_chunk)
 		new_chunk.position = Vector2(chunk_spawn_distance,0)
-		
+		wait = new_chunk.chunk_length
 	
 func time_per_obsticle():
 	return obs_size.x/speed

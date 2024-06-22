@@ -1,25 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddenmgo1353cl"]
+[gd_scene load_steps=2 format=3 uid="uid://ddenmgo1353cl"]
 
 [ext_resource type="Script" path="res://src/obsctacles/pregen_chunk.gd" id="1_f7xeh"]
-[ext_resource type="PackedScene" uid="uid://br1t8t37qtphs" path="res://res/scenes/obstacles/normal_obstacle.tscn" id="2_qxgcr"]
 
 [node name="Chunk" type="Node2D"]
 script = ExtResource("1_f7xeh")
-chunk_size = Vector2i(2, 2)
 
 [node name="VisibilityNotifier" type="VisibleOnScreenNotifier2D" parent="."]
 unique_name_in_owner = true
-
-[node name="Obstacles" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="Normal Obstacle" parent="Obstacles" instance=ExtResource("2_qxgcr")]
-
-[node name="Normal Obstacle2" parent="Obstacles" instance=ExtResource("2_qxgcr")]
-position = Vector2(128, 0)
-
-[node name="Normal Obstacle3" parent="Obstacles" instance=ExtResource("2_qxgcr")]
-position = Vector2(0, 128)
 
 [connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_visibility_notifier_screen_exited"]
