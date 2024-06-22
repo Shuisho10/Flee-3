@@ -17,8 +17,8 @@ current_scene = NodePath("../TestLevel")
 
 [node name="TestLevel" type="Node2D" parent="." node_paths=PackedStringArray("chunk_pool")]
 script = ExtResource("2_m3l23")
+chunk_pool = [NodePath("Data/Chunks/L Shape Chunk")]
 speed = 1000.0
-chunk_pool = [NodePath("Data/Chunks/Random Chunk"), NodePath("Data/Chunks/L Shape Chunk")]
 
 [node name="Data" type="Node2D" parent="TestLevel"]
 visible = false
