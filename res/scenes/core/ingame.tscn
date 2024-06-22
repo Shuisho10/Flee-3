@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2jk0phonhmf4"]
+[gd_scene load_steps=10 format=3 uid="uid://d2jk0phonhmf4"]
 
 [ext_resource type="PackedScene" uid="uid://d3w2kddmqhhql" path="res://res/scenes/core/player.tscn" id="1_700s5"]
 [ext_resource type="Script" path="res://src/core/Scroller.gd" id="2_m3l23"]
 [ext_resource type="PackedScene" uid="uid://83f654p435au" path="res://res/scenes/core/random_chunk.tscn" id="3_exxyn"]
 [ext_resource type="PackedScene" uid="uid://ddenmgo1353cl" path="res://res/scenes/core/pregen_chunk.tscn" id="4_3105g"]
 [ext_resource type="PackedScene" uid="uid://br1t8t37qtphs" path="res://res/scenes/obstacles/normal_obstacle.tscn" id="4_dqd1q"]
+[ext_resource type="PackedScene" uid="uid://c7aphfe4kndxh" path="res://res/scenes/obstacles/wall_brick.tscn" id="6_sst18"]
+[ext_resource type="PackedScene" uid="uid://pirectaugn5n" path="res://res/scenes/obstacles/bear_trap.tscn" id="7_w4s75"]
+[ext_resource type="PackedScene" uid="uid://bypqg1i4qcr0d" path="res://res/scenes/obstacles/hole.tscn" id="8_rlroy"]
+[ext_resource type="PackedScene" uid="uid://dtn336ya0m7" path="res://res/scenes/enemies/bat.tscn" id="9_2oglu"]
 
 [node name="Ingame" type="Node2D"]
 
@@ -17,7 +21,7 @@ current_scene = NodePath("../TestLevel")
 
 [node name="TestLevel" type="Node2D" parent="." node_paths=PackedStringArray("chunk_pool")]
 script = ExtResource("2_m3l23")
-chunk_pool = [NodePath("Data/Chunks/Random Chunk")]
+chunk_pool = [NodePath("Data/Chunks/Random Chunk"), NodePath("Data/Chunks/L Shape Chunk"), NodePath("Data/Chunks/L Shape Chunk2")]
 speed = 500.0
 
 [node name="Data" type="Node2D" parent="TestLevel"]
@@ -26,8 +30,8 @@ visible = false
 [node name="Chunks" type="Node2D" parent="TestLevel/Data"]
 
 [node name="Random Chunk" parent="TestLevel/Data/Chunks" node_paths=PackedStringArray("obs_pool") instance=ExtResource("3_exxyn")]
-obs_pool = [NodePath("../../Obstacles/Normal Obstacle")]
-frequency = 0.216
+obs_pool = [NodePath("../../Things/Wall"), NodePath("../../Things/Hole"), NodePath("../../Things/Bear Trap"), NodePath("../../Things/Bat")]
+frequency = 0.197
 
 [node name="L Shape Chunk" parent="TestLevel/Data/Chunks" instance=ExtResource("4_3105g")]
 position = Vector2(0, 1000)
@@ -63,6 +67,12 @@ position = Vector2(0, 256)
 [node name="Normal Obstacle4" parent="TestLevel/Data/Chunks/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
 position = Vector2(128, -128)
 
-[node name="Obstacles" type="Node2D" parent="TestLevel/Data"]
+[node name="Things" type="Node2D" parent="TestLevel/Data"]
 
-[node name="Normal Obstacle" parent="TestLevel/Data/Obstacles" instance=ExtResource("4_dqd1q")]
+[node name="Wall" parent="TestLevel/Data/Things" instance=ExtResource("6_sst18")]
+
+[node name="Bear Trap" parent="TestLevel/Data/Things" instance=ExtResource("7_w4s75")]
+
+[node name="Hole" parent="TestLevel/Data/Things" instance=ExtResource("8_rlroy")]
+
+[node name="Bat" parent="TestLevel/Data/Things" instance=ExtResource("9_2oglu")]

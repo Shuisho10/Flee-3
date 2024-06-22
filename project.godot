@@ -19,6 +19,18 @@ config/icon="res://icon.svg"
 
 movie_writer/fps=120
 
+[file_customization]
+
+folder_colors={
+"res://res/scenes/core/": "purple",
+"res://res/scenes/enemies/": "orange",
+"res://res/scenes/obstacles/": "orange",
+"res://res/sprites/": "green",
+"res://src/core/": "purple",
+"res://src/enemies/": "orange",
+"res://src/obsctacles/": "orange"
+}
+
 [input]
 
 button_up={
@@ -59,5 +71,6 @@ button_reset={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

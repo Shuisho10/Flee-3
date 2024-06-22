@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://pirectaugn5n"]
+
+[ext_resource type="Texture2D" uid="uid://dfuq08sxmt5qd" path="res://res/sprites/trampaoso.png" id="1_bigeq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymqmk"]
+size = Vector2(110, 110)
+
+[node name="Hole" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("1_bigeq")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.175, 0.087)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ymqmk")

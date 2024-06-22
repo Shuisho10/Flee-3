@@ -1,11 +1,19 @@
 - Salto lateral <- CHECK
 - Puntaje <- CHECK
 - Game over <- CHECK
-- Obstaculos y enemigos <-
+- Obstaculos y enemigos <- CHECK
 
 - Rework al powerup (como disparar proyectiles, escudos) <-
+- Anti-powerup
+
 
 - Primer nivel de prueba <-
+
+- Menu
+- Configuraciones
+- Persistencia/Highscore
+- Twitch integration (que inviertan los ocntroles por un pequeño periodo de tiempo)
+
 - Dificultad (reflexionar sobre esto)
 
 - Pase de batalla/Gachapon/Skins etc... gimmick (Skins de emoji, furras para el yan)

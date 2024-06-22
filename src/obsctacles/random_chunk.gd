@@ -26,6 +26,8 @@ func _spawn(child_index: int,grid_pos: Vector2):
 	new_obs.position = Vector2(current_scene.obs_size.x*grid_pos.x,
 							   current_scene.obs_size.y*(grid_pos.y-current_scene.lane_size))
 	add_child(new_obs)
+	if new_obs is Enemy:
+		new_obs.setup(current_scene)
 
 func _process(delta: float):
 	if current_scene:
