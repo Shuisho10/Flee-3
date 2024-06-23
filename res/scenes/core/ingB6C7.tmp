@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d2jk0phonhmf4"]
+[gd_scene load_steps=12 format=3 uid="uid://d2jk0phonhmf4"]
 
 [ext_resource type="PackedScene" uid="uid://d3w2kddmqhhql" path="res://res/scenes/core/player.tscn" id="1_700s5"]
 [ext_resource type="Texture2D" uid="uid://15cq8dyv362t" path="res://res/sprites/caritaenmascarada.png" id="2_2x2ch"]
@@ -8,16 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://br1t8t37qtphs" path="res://res/scenes/obstacles/normal_obstacle.tscn" id="4_dqd1q"]
 [ext_resource type="PackedScene" uid="uid://c7aphfe4kndxh" path="res://res/scenes/obstacles/wall_brick.tscn" id="6_sst18"]
 [ext_resource type="PackedScene" uid="uid://pirectaugn5n" path="res://res/scenes/obstacles/bear_trap.tscn" id="7_w4s75"]
-[ext_resource type="Shader" path="res://res/scenes/core/test.gdshader" id="8_2ve7y"]
 [ext_resource type="PackedScene" uid="uid://bypqg1i4qcr0d" path="res://res/scenes/obstacles/hole.tscn" id="8_rlroy"]
 [ext_resource type="PackedScene" uid="uid://dtn336ya0m7" path="res://res/scenes/enemies/bat.tscn" id="9_2oglu"]
 [ext_resource type="PackedScene" uid="uid://qlnjcm1rkpya" path="res://res/scenes/enemies/ghost.tscn" id="11_3hgkq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_17keb"]
-shader = ExtResource("8_2ve7y")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aame3"]
-shader = ExtResource("8_2ve7y")
 
 [node name="Ingame" type="Node2D"]
 
@@ -31,8 +24,8 @@ current_scene = NodePath("../TestLevel")
 
 [node name="TestLevel" type="Node2D" parent="." node_paths=PackedStringArray("chunk_pool")]
 script = ExtResource("2_m3l23")
-chunk_pool = [NodePath("Data/Chunks/Random Chunk")]
-speed = 500.0
+chunk_pool = [NodePath("Data/Chunks/Random Chunk"), NodePath("Data/Chunks/L Shape Chunk"), NodePath("Data/Chunks/L Shape Chunk2")]
+speed = 1000.0
 
 [node name="Data" type="Node2D" parent="TestLevel"]
 visible = false
@@ -40,8 +33,8 @@ visible = false
 [node name="Chunks" type="Node2D" parent="TestLevel/Data"]
 
 [node name="Random Chunk" parent="TestLevel/Data/Chunks" node_paths=PackedStringArray("obs_pool") instance=ExtResource("3_exxyn")]
-obs_pool = [NodePath("../../Things/Ghost")]
-frequency = 0.155
+obs_pool = [NodePath("../../Things/Wall"), NodePath("../../Things/Hole"), NodePath("../../Things/Bear Trap"), NodePath("../../Things/Bat"), NodePath("../../Things/Ghost")]
+frequency = 0.197
 
 [node name="L Shape Chunk" parent="TestLevel/Data/Chunks" instance=ExtResource("4_3105g")]
 position = Vector2(0, 1000)
@@ -80,8 +73,6 @@ position = Vector2(128, -128)
 [node name="Things" type="Node2D" parent="TestLevel/Data"]
 
 [node name="Wall" parent="TestLevel/Data/Things" instance=ExtResource("6_sst18")]
-material = SubResource("ShaderMaterial_17keb")
-position = Vector2(52, 173)
 
 [node name="Bear Trap" parent="TestLevel/Data/Things" instance=ExtResource("7_w4s75")]
 
@@ -90,5 +81,4 @@ position = Vector2(52, 173)
 [node name="Bat" parent="TestLevel/Data/Things" instance=ExtResource("9_2oglu")]
 
 [node name="Ghost" parent="TestLevel/Data/Things" instance=ExtResource("11_3hgkq")]
-material = SubResource("ShaderMaterial_aame3")
 position = Vector2(-8, 4)

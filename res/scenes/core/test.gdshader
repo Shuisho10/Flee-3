@@ -5,8 +5,8 @@ void vertex() {
 }
 
 void fragment() {
-	float displacement = 1. - VERTEX.y*0.1 + TIME*10.;
-	COLOR = vec4(COLOR.xyz,sin(displacement));
+	float transparency = SCREEN_UV.x;
+	COLOR = vec4(COLOR.xyz,min(COLOR.a,transparency));
 }
 
 //void light() {
