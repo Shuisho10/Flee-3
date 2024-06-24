@@ -7,6 +7,9 @@ var entered_screen := false
 @export var obs_pool: Array[PackedScene] = []
 @export_range(0.,1.) var frequency : float = 0.2
 
+
+
+
 func setup(scene: Scroller):
 	current_scene=scene
 	var vis_notif : VisibleOnScreenNotifier2D = %VisibilityNotifier

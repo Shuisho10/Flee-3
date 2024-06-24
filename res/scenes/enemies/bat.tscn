@@ -15,7 +15,7 @@ script = ExtResource("2_qp744")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.1, 0.1)
-collision_layer = 2
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, 0)

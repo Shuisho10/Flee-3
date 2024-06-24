@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2jk0phonhmf4"]
+[gd_scene load_steps=11 format=3 uid="uid://d2jk0phonhmf4"]
 
 [ext_resource type="PackedScene" uid="uid://d3w2kddmqhhql" path="res://res/scenes/core/player.tscn" id="1_700s5"]
 [ext_resource type="Texture2D" uid="uid://15cq8dyv362t" path="res://res/sprites/caritaenmascarada.png" id="2_2x2ch"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://83f654p435au" path="res://res/scenes/core/random_chunk.tscn" id="3_exxyn"]
 [ext_resource type="PackedScene" uid="uid://ddenmgo1353cl" path="res://res/scenes/core/pregen_chunk.tscn" id="4_3105g"]
 [ext_resource type="PackedScene" uid="uid://br1t8t37qtphs" path="res://res/scenes/obstacles/normal_obstacle.tscn" id="4_dqd1q"]
-[ext_resource type="PackedScene" uid="uid://c7aphfe4kndxh" path="res://res/scenes/obstacles/wall_brick.tscn" id="6_sst18"]
+[ext_resource type="PackedScene" uid="uid://dtn336ya0m7" path="res://res/scenes/enemies/bat.tscn" id="7_vsdbm"]
+[ext_resource type="PackedScene" uid="uid://pirectaugn5n" path="res://res/scenes/obstacles/bear_trap.tscn" id="8_hoe4k"]
 [ext_resource type="Script" path="res://res/scenes/core/ScrollingBG.gd" id="8_i4l8f"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j60ve"]
@@ -22,54 +23,57 @@ current_scene = NodePath("../TestLevel")
 
 [node name="Main" type="Camera2D" parent="."]
 
-[node name="TestLevel" type="Node2D" parent="." node_paths=PackedStringArray("chunk_pool")]
+[node name="TestLevel" type="Node2D" parent="." node_paths=PackedStringArray("chunk_pools")]
 script = ExtResource("2_m3l23")
-chunk_pool = [NodePath("Data/Chunks/Random Chunk")]
+section_score = Array[float]([10.0])
+chunk_pools = [NodePath("Data/Section2"), NodePath("Data/Section1")]
 speed = 500.0
 
 [node name="Data" type="Node2D" parent="TestLevel"]
 visible = false
 
-[node name="Chunks" type="Node2D" parent="TestLevel/Data"]
+[node name="Section1" type="Node2D" parent="TestLevel/Data"]
 
-[node name="Random Chunk" parent="TestLevel/Data/Chunks" instance=ExtResource("3_exxyn")]
-chunk_length = 15
-obs_pool = Array[PackedScene]([ExtResource("6_sst18")])
-frequency = 0.155
-
-[node name="L Shape Chunk" parent="TestLevel/Data/Chunks" instance=ExtResource("4_3105g")]
+[node name="L Shape Chunk" parent="TestLevel/Data/Section1" instance=ExtResource("4_3105g")]
 position = Vector2(0, 1000)
 _can_flip_x = false
 _can_flip_y = false
 
-[node name="Normal Obstacle" parent="TestLevel/Data/Chunks/L Shape Chunk" instance=ExtResource("4_dqd1q")]
+[node name="Normal Obstacle" parent="TestLevel/Data/Section1/L Shape Chunk" instance=ExtResource("4_dqd1q")]
 
-[node name="Normal Obstacle2" parent="TestLevel/Data/Chunks/L Shape Chunk" instance=ExtResource("4_dqd1q")]
+[node name="Normal Obstacle2" parent="TestLevel/Data/Section1/L Shape Chunk" instance=ExtResource("4_dqd1q")]
 position = Vector2(0, 128)
 
-[node name="Normal Obstacle3" parent="TestLevel/Data/Chunks/L Shape Chunk" instance=ExtResource("4_dqd1q")]
+[node name="Normal Obstacle3" parent="TestLevel/Data/Section1/L Shape Chunk" instance=ExtResource("4_dqd1q")]
 position = Vector2(0, 256)
 
-[node name="Normal Obstacle4" parent="TestLevel/Data/Chunks/L Shape Chunk" instance=ExtResource("4_dqd1q")]
+[node name="Normal Obstacle4" parent="TestLevel/Data/Section1/L Shape Chunk" instance=ExtResource("4_dqd1q")]
 position = Vector2(0, -128)
 
-[node name="Normal Obstacle5" parent="TestLevel/Data/Chunks/L Shape Chunk" instance=ExtResource("4_dqd1q")]
+[node name="Normal Obstacle5" parent="TestLevel/Data/Section1/L Shape Chunk" instance=ExtResource("4_dqd1q")]
 position = Vector2(0, -256)
 
-[node name="L Shape Chunk2" parent="TestLevel/Data/Chunks" instance=ExtResource("4_3105g")]
+[node name="L Shape Chunk2" parent="TestLevel/Data/Section1" instance=ExtResource("4_3105g")]
 position = Vector2(1000, 2000)
 chunk_length = 2
 
-[node name="Normal Obstacle" parent="TestLevel/Data/Chunks/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
+[node name="Normal Obstacle" parent="TestLevel/Data/Section1/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
 
-[node name="Normal Obstacle2" parent="TestLevel/Data/Chunks/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
+[node name="Normal Obstacle2" parent="TestLevel/Data/Section1/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
 position = Vector2(128, 128)
 
-[node name="Normal Obstacle3" parent="TestLevel/Data/Chunks/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
+[node name="Normal Obstacle3" parent="TestLevel/Data/Section1/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
 position = Vector2(0, 256)
 
-[node name="Normal Obstacle4" parent="TestLevel/Data/Chunks/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
+[node name="Normal Obstacle4" parent="TestLevel/Data/Section1/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
 position = Vector2(128, -128)
+
+[node name="Section2" type="Node2D" parent="TestLevel/Data"]
+
+[node name="Random Chunk" parent="TestLevel/Data/Section2" instance=ExtResource("3_exxyn")]
+chunk_length = 15
+obs_pool = Array[PackedScene]([ExtResource("7_vsdbm"), ExtResource("8_hoe4k")])
+frequency = 0.155
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

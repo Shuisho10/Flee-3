@@ -47,7 +47,6 @@ func move_down():
 
 func end_jump():
 	jumping=false
-	%Hitbox.monitoring = true
 	if %Hitbox.get_overlapping_areas():
 		game_over()
 
@@ -59,6 +58,11 @@ func game_over():
 	current_scene.game_over()
 	_anim_player.stop()
 
-func _on_area_2d_area_shape_entered(_area_rid, _area, _area_shape_index, _local_shape_index):
-	if not jumping:
+func _on_area_2d_area_shape_entered(_area_rid, area, _area_shape_index, _local_shape_index):
+	if area.get_collision_layer_value(3):
 		game_over()
+	if area.get_collision_layer_value(2):
+		if jumping:
+			current_scene.points+=1
+		else:
+			game_over()
