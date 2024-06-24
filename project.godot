@@ -26,9 +26,11 @@ movie_writer/fps=120
 [file_customization]
 
 folder_colors={
+"res://res/scenes/": "purple",
 "res://res/scenes/core/": "purple",
 "res://res/scenes/enemies/": "orange",
 "res://res/scenes/obstacles/": "orange",
+"res://res/shaders/": "green",
 "res://res/sprites/": "green",
 "res://src/core/": "purple",
 "res://src/enemies/": "orange",

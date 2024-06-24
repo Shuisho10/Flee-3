@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d2jk0phonhmf4"]
+[gd_scene load_steps=10 format=3 uid="uid://d2jk0phonhmf4"]
 
 [ext_resource type="PackedScene" uid="uid://d3w2kddmqhhql" path="res://res/scenes/core/player.tscn" id="1_700s5"]
 [ext_resource type="Texture2D" uid="uid://15cq8dyv362t" path="res://res/sprites/caritaenmascarada.png" id="2_2x2ch"]
@@ -7,17 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://ddenmgo1353cl" path="res://res/scenes/core/pregen_chunk.tscn" id="4_3105g"]
 [ext_resource type="PackedScene" uid="uid://br1t8t37qtphs" path="res://res/scenes/obstacles/normal_obstacle.tscn" id="4_dqd1q"]
 [ext_resource type="PackedScene" uid="uid://c7aphfe4kndxh" path="res://res/scenes/obstacles/wall_brick.tscn" id="6_sst18"]
-[ext_resource type="PackedScene" uid="uid://pirectaugn5n" path="res://res/scenes/obstacles/bear_trap.tscn" id="7_w4s75"]
-[ext_resource type="Shader" path="res://res/scenes/core/test.gdshader" id="8_2ve7y"]
-[ext_resource type="PackedScene" uid="uid://bypqg1i4qcr0d" path="res://res/scenes/obstacles/hole.tscn" id="8_rlroy"]
-[ext_resource type="PackedScene" uid="uid://dtn336ya0m7" path="res://res/scenes/enemies/bat.tscn" id="9_2oglu"]
-[ext_resource type="PackedScene" uid="uid://qlnjcm1rkpya" path="res://res/scenes/enemies/ghost.tscn" id="11_3hgkq"]
+[ext_resource type="Script" path="res://res/scenes/core/ScrollingBG.gd" id="8_i4l8f"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_17keb"]
-shader = ExtResource("8_2ve7y")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aame3"]
-shader = ExtResource("8_2ve7y")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j60ve"]
+load_path = "res://.godot/imported/lane3.png-33c436a3c8ff5cba547a01db71f75861.ctex"
 
 [node name="Ingame" type="Node2D"]
 
@@ -39,8 +32,9 @@ visible = false
 
 [node name="Chunks" type="Node2D" parent="TestLevel/Data"]
 
-[node name="Random Chunk" parent="TestLevel/Data/Chunks" node_paths=PackedStringArray("obs_pool") instance=ExtResource("3_exxyn")]
-obs_pool = [NodePath("../../Things/Ghost")]
+[node name="Random Chunk" parent="TestLevel/Data/Chunks" instance=ExtResource("3_exxyn")]
+chunk_length = 15
+obs_pool = Array[PackedScene]([ExtResource("6_sst18")])
 frequency = 0.155
 
 [node name="L Shape Chunk" parent="TestLevel/Data/Chunks" instance=ExtResource("4_3105g")]
@@ -77,18 +71,13 @@ position = Vector2(0, 256)
 [node name="Normal Obstacle4" parent="TestLevel/Data/Chunks/L Shape Chunk2" instance=ExtResource("4_dqd1q")]
 position = Vector2(128, -128)
 
-[node name="Things" type="Node2D" parent="TestLevel/Data"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="Wall" parent="TestLevel/Data/Things" instance=ExtResource("6_sst18")]
-material = SubResource("ShaderMaterial_17keb")
-position = Vector2(52, 173)
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(256, 0)
 
-[node name="Bear Trap" parent="TestLevel/Data/Things" instance=ExtResource("7_w4s75")]
-
-[node name="Hole" parent="TestLevel/Data/Things" instance=ExtResource("8_rlroy")]
-
-[node name="Bat" parent="TestLevel/Data/Things" instance=ExtResource("9_2oglu")]
-
-[node name="Ghost" parent="TestLevel/Data/Things" instance=ExtResource("11_3hgkq")]
-material = SubResource("ShaderMaterial_aame3")
-position = Vector2(-8, 4)
+[node name="Background" type="Node2D" parent="ParallaxBackground/ParallaxLayer" node_paths=PackedStringArray("current_scene")]
+z_index = -10
+script = ExtResource("8_i4l8f")
+current_scene = NodePath("../../../TestLevel")
+tile = SubResource("CompressedTexture2D_j60ve")

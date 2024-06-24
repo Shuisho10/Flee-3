@@ -11,7 +11,7 @@ var lane_size:int = 2
 var obs_count:int = 0
 var points:int = 0
 var obs_size: Vector2 = Vector2(128,128)
-var chunk_spawn_distance :int = 650
+var chunk_spawn_distance :int = 706
 var _wait: int = 0
 var _point_timer: Timer
 var rng: RandomNumberGenerator
@@ -24,7 +24,7 @@ func _init():
 	_point_timer.wait_time = 1.0
 	_point_timer.autostart = true
 	_point_timer.timeout.connect(score_by_sec)
-	
+	print(time_per_obsticle())
 
 func _process(delta: float):
 	if running:
@@ -40,7 +40,7 @@ func _spawn():
 		var randomint: int = rng.randi_range(0,chunk_pool.size()-1)
 		var new_chunk :Node2D = chunk_pool[randomint].duplicate()
 		add_child(new_chunk)
-		new_chunk.position = Vector2(chunk_spawn_distance,0)
+		new_chunk.position = Vector2(chunk_spawn_distance-fmod(scrolled,128),0)
 		new_chunk.setup(self)
 		_wait = new_chunk.chunk_length
 

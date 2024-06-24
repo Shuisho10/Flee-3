@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://qlnjcm1rkpya"]
 
 [ext_resource type="Texture2D" uid="uid://cwfhtbg04fm6j" path="res://res/sprites/animated/fantasmico.png" id="1_u166j"]
-[ext_resource type="Script" path="res://src/core/ghost.gd" id="2_lc7fn"]
+[ext_resource type="Script" path="res://src/enemies/ghost.gd" id="2_ibn7h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymqmk"]
 size = Vector2(110, 110)
@@ -11,7 +11,7 @@ texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("1_u166j")
 hframes = 2
-script = ExtResource("2_lc7fn")
+script = ExtResource("2_ibn7h")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.1, 0.1)
