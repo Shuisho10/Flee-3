@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dca3cqv52p2ua"
-path="res://.godot/imported/ladrillonuevo.png-fc75f20cf5db92c390269237907a7e3f.ctex"
+uid="uid://bvf0jjuhg6xl4"
+path="res://.godot/imported/escoputa.png-d37e9a58a0ca3759e2e6ce851fd1d5e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/sprites/ladrillonuevo.png"
-dest_files=["res://.godot/imported/ladrillonuevo.png-fc75f20cf5db92c390269237907a7e3f.ctex"]
+source_file="res://res/sprites/escoputa.png"
+dest_files=["res://.godot/imported/escoputa.png-d37e9a58a0ca3759e2e6ce851fd1d5e6.ctex"]
 
 [params]
 

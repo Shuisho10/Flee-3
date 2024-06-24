@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dffi051a8tg6v"]
+
+[ext_resource type="Shader" path="res://res/shaders/powerup.gdshader" id="1_11io4"]
+[ext_resource type="Texture2D" uid="uid://clfj0r74kcqfy" path="res://res/sprites/qbox.png" id="2_r0cr8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ojpx"]
+shader = ExtResource("1_11io4")
+shader_parameter/chroma_color = Color(0, 1, 0, 1)
+shader_parameter/color1 = Color(0.984314, 0, 0.933333, 1)
+shader_parameter/color2 = Color(0.682353, 0.00392157, 0.913725, 1)
+shader_parameter/direction = Vector2(0.7, 0.3)
+shader_parameter/wave_scale = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymqmk"]
+size = Vector2(110, 110)
+
+[node name="PowerUp" type="Sprite2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_3ojpx")
+scale = Vector2(4, 4)
+texture = ExtResource("2_r0cr8")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.25, 0.25)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ymqmk")

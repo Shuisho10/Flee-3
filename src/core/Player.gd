@@ -1,16 +1,34 @@
 extends Sprite2D
 signal player_hit
 
+#Relations
 @export var current_scene : Scroller
 @onready var _anim_player: AnimationPlayer = %AnimationPlayer
 @onready var _anim_jump: Animation = _anim_player.get_animation("jump")
+var _proyectile_scene = preload("res://res/scenes/core/proyectile.tscn")
 
+#Movement
 var lane: int = 0
 var locked_movement: bool = false
 var jumping: bool = false
 var side_jump: bool = false
 
+#Powerups
+var invencible:float = 0.
+var proyectiles:=0
+
 func _process(delta: float):
+	
+	if invencible>0:
+		invencible-=delta
+		if invencible<3.:
+			%ShieldSprite.visible = sin(invencible*10.)<0
+		else:
+			%ShieldSprite.visible = true
+	else:
+		%ShieldSprite.visible = false
+	
+	
 	if current_scene.running:
 		position.y = lerpf(position.y, lane * current_scene.obs_size.y, clampf(delta * current_scene.speed / 20,0,1))
 		if Input.is_action_pressed("button_jump"):
@@ -53,16 +71,51 @@ func end_jump():
 func _input(_e):
 	if Input.is_action_just_pressed("button_reset"):
 		get_tree().reload_current_scene()
+	
+	if Input.is_action_just_pressed("button_shoot"):
+		if proyectiles>0:
+			_shoot_proyectile()
 
 func game_over():
 	current_scene.game_over()
 	_anim_player.stop()
 
+func _shoot_proyectile():
+	if not %ShotgunAnimation.is_playing():
+		proyectiles-=1
+		var p:=_proyectile_scene.instantiate()
+		get_parent().add_child(p)
+		p.global_position=global_position+Vector2(64,0)
+		
+		%ShotgunAnimation.play("shoot",1)
+		await %ShotgunAnimation.animation_finished
+		%ShotgunSprite.visible = proyectiles>0
+
+func on_power_up():
+	var powerup:=current_scene.rng.randi_range(0,1)
+	match(powerup):
+		0:
+			proyectiles=5
+		1:
+			print("shield")
+			invencible=7.
+		_:
+			print("wtf")
+
+
+
+
 func _on_area_2d_area_shape_entered(_area_rid, area, _area_shape_index, _local_shape_index):
-	if area.get_collision_layer_value(3):
-		game_over()
-	if area.get_collision_layer_value(2):
-		if jumping:
-			current_scene.points+=1
-		else:
+	if area.get_collision_layer_value(4):
+		area.get_parent().visible = false
+		area.set_deferred("monitorable",false)
+		on_power_up()
+	
+	if invencible<=0:
+		if area.get_collision_layer_value(3):
 			game_over()
+		if area.get_collision_layer_value(2):
+			if jumping:
+				current_scene.points+=1
+			else:
+				game_over()

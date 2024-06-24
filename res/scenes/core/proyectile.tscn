@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://c45aqu2a0aos3"]
+
+[ext_resource type="Script" path="res://res/scenes/core/proyectile.gd" id="1_htolp"]
+
+[sub_resource type="Curve" id="Curve_h0ywb"]
+_data = [Vector2(0.00851063, 0.130573), 0.0, 0.0, 0, 0, Vector2(0.344681, 0.517028), 0.0472907, 0.0472907, 0, 0, Vector2(0.9, 0.125398), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnee7"]
+size = Vector2(11, 2)
+
+[node name="Proyectile" type="Node2D"]
+script = ExtResource("1_htolp")
+
+[node name="Line2D" type="Line2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, -4.76837e-07)
+scale = Vector2(1.44, 1.35)
+points = PackedVector2Array(0, 0, 10, 0, 30, 0)
+width_curve = SubResource("Curve_h0ywb")
+default_color = Color(1, 1, 0.658824, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1.44, 1.35)
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(7, 0)
+shape = SubResource("RectangleShape2D_bnee7")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

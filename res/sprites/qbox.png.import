@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dca3cqv52p2ua"
-path="res://.godot/imported/ladrillonuevo.png-fc75f20cf5db92c390269237907a7e3f.ctex"
+uid="uid://clfj0r74kcqfy"
+path="res://.godot/imported/qbox.png-aa8c47704f473bb61d3de9d11fb26593.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/sprites/ladrillonuevo.png"
-dest_files=["res://.godot/imported/ladrillonuevo.png-fc75f20cf5db92c390269237907a7e3f.ctex"]
+source_file="res://res/sprites/qbox.png"
+dest_files=["res://.godot/imported/qbox.png-aa8c47704f473bb61d3de9d11fb26593.ctex"]
 
 [params]
 
