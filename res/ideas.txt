@@ -2,15 +2,13 @@
 - Puntaje <- CHECK
 - Game over <- CHECK
 - Obstaculos y enemigos <- CHECK
-
-- Rework al powerup (como disparar proyectiles, escudos) <-
-- Anti-powerup
-
-
+- Rework al powerup (como disparar proyectiles, escudos) <- CHECK
+- Boss <-
 - Primer nivel de prueba <-
+- Menu <-
+- Configuraciones z-
 
-- Menu
-- Configuraciones
+- Anti-powerup
 - Persistencia/Highscore
 - Twitch integration (que inviertan los ocntroles por un pequeño periodo de tiempo)
 

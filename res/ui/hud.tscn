@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwpfeoskds0ac"]
+
+[ext_resource type="Script" path="res://src/ui/hud.gd" id="1_hbywk"]
+
+[sub_resource type="SystemFont" id="SystemFont_48iaw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hdc40"]
+font = SubResource("SystemFont_48iaw")
+font_size = 20
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hbywk")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 241.0
+offset_top = 15.0
+offset_right = -237.0
+offset_bottom = 42.0
+grow_horizontal = 2
+max_value = 1.0
+step = 0.001
+show_percentage = false
+
+[node name="ScoreLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -3.0
+offset_top = 13.0
+offset_right = -3.0
+offset_bottom = 41.0
+grow_horizontal = 2
+text = "Puntuación: 000"
+label_settings = SubResource("LabelSettings_hdc40")
+horizontal_alignment = 1
+vertical_alignment = 1

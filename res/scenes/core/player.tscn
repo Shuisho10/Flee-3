@@ -116,6 +116,7 @@ texture = ExtResource("3_i5qcq")
 
 [node name="ShotgunSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(6.66667, 2.66667)
 scale = Vector2(1.26094, 1.13281)
 texture = ExtResource("4_scsjg")
@@ -125,7 +126,6 @@ visible = false
 position = Vector2(36.7452, 0)
 texture = ExtResource("5_r5klp")
 hframes = 3
-frame = 2
 
 [node name="ShotgunAnimation" type="AnimationPlayer" parent="ShotgunSprite"]
 unique_name_in_owner = true

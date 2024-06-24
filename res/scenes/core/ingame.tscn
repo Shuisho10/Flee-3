@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2jk0phonhmf4"]
+[gd_scene load_steps=12 format=3 uid="uid://d2jk0phonhmf4"]
 
 [ext_resource type="PackedScene" uid="uid://d3w2kddmqhhql" path="res://res/scenes/core/player.tscn" id="1_700s5"]
 [ext_resource type="Texture2D" uid="uid://15cq8dyv362t" path="res://res/sprites/caritaenmascarada.png" id="2_2x2ch"]
@@ -9,8 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dtn336ya0m7" path="res://res/scenes/enemies/bat.tscn" id="7_vsdbm"]
 [ext_resource type="PackedScene" uid="uid://pirectaugn5n" path="res://res/scenes/obstacles/bear_trap.tscn" id="8_hoe4k"]
 [ext_resource type="Script" path="res://src/core/ScrollingBG.gd" id="8_i4l8f"]
-[ext_resource type="PackedScene" uid="uid://dffi051a8tg6v" path="res://res/scenes/collectables/powerup.tscn" id="10_ymkkc"]
-[ext_resource type="PackedScene" uid="uid://c45aqu2a0aos3" path="res://res/scenes/core/proyectile.tscn" id="11_liqcs"]
+[ext_resource type="PackedScene" uid="uid://cwpfeoskds0ac" path="res://res/ui/hud.tscn" id="10_3rml1"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j60ve"]
 load_path = "res://.godot/imported/lane3.png-33c436a3c8ff5cba547a01db71f75861.ctex"
@@ -88,7 +87,5 @@ script = ExtResource("8_i4l8f")
 current_scene = NodePath("../../../TestLevel")
 tile = SubResource("CompressedTexture2D_j60ve")
 
-[node name="PowerUp" parent="." instance=ExtResource("10_ymkkc")]
-position = Vector2(-504, 175)
-
-[node name="Proyectile" parent="." instance=ExtResource("11_liqcs")]
+[node name="HUD" parent="." node_paths=PackedStringArray("current_scene") instance=ExtResource("10_3rml1")]
+current_scene = NodePath("../TestLevel")

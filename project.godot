@@ -33,9 +33,11 @@ folder_colors={
 "res://res/scenes/obstacles/": "orange",
 "res://res/shaders/": "green",
 "res://res/sprites/": "green",
+"res://res/ui/": "blue",
 "res://src/core/": "purple",
 "res://src/enemies/": "orange",
-"res://src/obsctacles/": "orange"
+"res://src/obsctacles/": "orange",
+"res://src/ui/": "blue"
 }
 
 [input]
